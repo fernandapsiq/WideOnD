@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{base::head}"></head>
+
+<body>
+
+	<div th:replace="~{base::logo}"></div>
+
+	<div class="container container-md">
+		<div th:replace="~{base::title('Registration')}"></div>
+
+		<div class="card mb-3">
+			<form action="#" th:action="@{/register/new}" th:object="${userData}" class="card-body" method="put">
+				<div class="alert alert-danger" role="alert" th:if="${param.error}">
+					There are invalid fields!
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-5">
+						<label for="username">Username</label>
+						<input th:field="*{username}" th:errorclass="is-invalid" class="form-control" name="username"
+							placeholder="Username" required>
+						<div class="invalid-feedback" th:errors="*{username}">Error message </div>
+					</div>
+					<div class="form-group col-md-7">
+						<label for="email">Email</label>
+						<input type="email" th:field="*{email}" th:errorclass="is-invalid" class="form-control"
+							name="email" placeholder="Email" required>
+						<div class="invalid-feedback" th:errors="*{email}"> Error message </div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-5">
+						<label for="password">Password</label>
+						<input type="password" th:field="*{password}" th:errorclass="is-invalid" class="form-control"
+							name="password" placeholder="Password" required>
+					</div>
+					<div class="invalid-feedback" th:errors="*{password}"> Error message </div>
+					<div class="form-group col-md-7">
+						<label for="password">Phone number</label>
+						<input type="password" th:field="*{password}" th:errorclass="is-invalid" class="form-control"
+							name="password" placeholder="Phone number" required>
+					</div>
+
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<div class="input-group-text">
+								<input type="checkbox" aria-label="Checkbox for following text input">
+							</div>
+						</div>
+						<input type="text" class="form-control" aria-label="Text input with checkbox">
+					</div>
+					<div class="invalid-feedback" th:errors="*{password}"> Error message </div>
+				</div>
+				
+				<div class="form-group col-md-6">
+						<label for="firstName">First Name</label>
+						<input th:field="*{firstName}" th:errorclass="is-invalid" class="form-control" name="firstName"
+							placeholder="First Name" required>
+						<div class="invalid-feedback" th:errors="*{firstName}">Error message</div>
+
+					</div>
+					<div class="form-group col-md-6">
+						<label for="lastName">Last Name</label>
+						<input th:field="*{lastName}" th:errorclass="is-invalid" class="form-control" name="lastName"
+							placeholder="Last Name" required>
+						<div class="invalid-feedback" th:errors="*{lastName}">Error message</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+						<label for="about">About</label>
+						<textarea th:field="*{about}" th:errorclass="is-invalid" class="form-control" name="about"
+							placeholder="Tell us about you">
+					</div>
+				<button class="btn btn-primary" type="submit">Edit</button>
+			</form>
+		</div>
+
+	</div>
+</body>
+
+</html>

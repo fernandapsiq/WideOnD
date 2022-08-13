@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{base::head}"></head>
+
+<body>
+
+	<div th:replace="~{base::logo}"></div>
+
+	<div class="container container-md">
+		<div th:replace="~{base::title('Post new Job')}"></div>
+
+		<div class="card mb-3">
+			<form action="#" th:action="@{/post/new}" th:object="${postData}" class="card-body" method="post">
+				<div class="row g-3">
+					<div class="col col-md-8 form-group">
+						<label for="title">Job Title</label>
+						<input th:field="*{title}" name="title" class="form-control" placeholder="Post title" />
+						<!-- <div class="invalid-feedback" th:errors="*{username}"> </div> -->
+					</div>
+					<div class="col col-md-4 form-group">
+						<label for="deadline">Deadline</label>
+						<div class="input-group date" data-date-format="dd/mm/yyyy">
+							<input th:field="*{deadline}" type="text" class="form-control" placeholder="dd/mm/yyyy">
+							<div class="input-group-addon"> </div>
+						</div>
+						<!-- <div class="invalid-feedback" th:errors="*{password}"> </div> -->
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="jobDescription">Description</label>
+					<textarea th:field="*{description}" name="jobDescription" placeholder="Describe your oppotunitie"
+						class="form-control"></textarea>
+					<!-- <div class="invalid-feedback" th:errors="*{email}"> </div> -->
+				</div>
+				<div class="form-group">
+					<label for="companyWebsite">Company Website</label>
+					<input th:field="*{companyWebsite}" name="companyWebsite" class="form-control" placeholder="Paste your company website link here" />
+					<!-- <div class="invalid-feedback" th:errors="*{email}"> </div> -->
+				</div>
+				<div class="form-group">
+					<label for="imgDescriptionLink">Image Link</label>
+					<input th:field="*{imgDescriptionLink}" name="imgDescriptionLink" class="form-control" placeholder="Paste image to describe your oppotunitie" />
+					<!-- <div class="invalid-feedback" th:errors="*{email}"> </div> -->
+				</div>
+				<button class="btn btn-primary" type="submit">Send new Post</button>
+			</form>
+		</div>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- Datapicker Plugin -->
+	<script
+		src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js'></script>
+	<script> $('.input-group.date').datepicker({format: "dd/mm/yyyy"}); </script>
+	<div th:replace="~{base::bootstrapjs}"> </div>
+</body>
+
+</html>

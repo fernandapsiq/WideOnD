@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="~{base::head}"></head>
+
+<body>
+
+	<div th:replace="~{base::logo}"></div>
+
+	<div class="container container-md">
+		<div th:replace="~{base::title('Registration')}"></div>
+
+		<div class="card mb-3">
+			<form action="#" th:action="@{/register/details}" th:object="${userDetailsData}" class="card-body" method="post">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="firstName">First Name</label>
+						<input th:field="*{firstName}" th:errorclass="is-invalid" class="form-control" name="firstName"
+							placeholder="First Name" required>
+						<div class="invalid-feedback" th:errors="*{firstName}">Error message</div>
+
+					</div>
+					<div class="form-group col-md-6">
+						<label for="lastName">Last Name</label>
+						<input th:field="*{lastName}" th:errorclass="is-invalid" class="form-control" name="lastName"
+							placeholder="Last Name" required>
+						<div class="invalid-feedback" th:errors="*{lastName}">Error message</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+						<label for="about">About</label>
+						<textarea th:field="*{about}" th:errorclass="is-invalid" class="form-control" name="about"
+							placeholder="Tell us about you">
+					</div>
+				<div class="invalid-feedback" th:errors="*{password}"> Error message </div>
+				<button class="btn btn-primary" type="submit">Register</button>
+			</form>
+		</div>
+
+	</div>
+</body>
+
+</html>
